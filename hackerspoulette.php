@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hackers Poulette</title>
 </head>
 <body>
+    <h2>Contact support</h2>
     <form method="POST" action="">
-        <label>Contact support</label>
         <br>
         <label for="name">Name</label>
         <input type="text" name="name" minlength="2" maxlength="255" required>
@@ -22,10 +22,13 @@
         <label for="comment">Comment</label>
         <input type="text" name="comment" minlength="2" maxlength="1000" required>
         <br>
+        <input type="text" name="honey">
         <input type="submit">
     </form>
 
 <?php
+
+//raccorder docs (css etc)
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = array();
@@ -78,6 +81,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } //min and maximum length
         }
     }
+
+    //check honeypot
+    /*if (isset ($_POST['submit']) && $_POST['submit'] == 'submit') {
+        if (empty($_POST['honey'])) {
+            //validate form 
+        } else {
+            //stop form processing? it's not like the bot is going to read the error message
+        }
+    }*/
+    //captcha : requires a website, so to do after deployment?
+
+    //^ validate all that with the linked validator instead?
+
+    //PDO
 
     if (count($errors) === 0) {
         echo '<p class="text-xl italic mb-2 p-2">Thank you! We will get back to you as soon as possible</p>';
