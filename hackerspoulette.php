@@ -8,6 +8,7 @@
     <title>Hackers Poulette</title>
 </head>
 <body>
+    <div class="contactform">
     <h2>Contact support</h2>
     <form method="POST" action="">
         <br>
@@ -26,6 +27,7 @@
         <input type="text" name="honey">
         <input type="submit">
     </form>
+</div>
 
 <?php
 
