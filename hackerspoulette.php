@@ -95,6 +95,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //^ validate all that with the linked validator instead?
 
     //PDO
+    $pdo = new PDO('mysql:host=localhost;dbname=hackerspoulette', 'root', '');
+
+    $query = $pdo->prepare("INSERT INTO hackerspoulette (name, first_name, email, comments) 
+    VALUES (:name, :first_name, :email, :comments)");
+    
 
     if (count($errors) === 0) {
         echo '<p class="text-xl italic mb-2 p-2">Thank you! We will get back to you as soon as possible</p>';
