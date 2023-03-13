@@ -99,10 +99,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $query = $pdo->prepare("INSERT INTO hackerspoulette (name, first_name, email, comments) 
     VALUES (:name, :first_name, :email, :comments)");
-    
+
+    //liaison des valeurs
+    //exécution de la requête
+
 
     if (count($errors) === 0) {
-        echo '<p class="text-xl italic mb-2 p-2">Thank you! We will get back to you as soon as possible</p>';
+        echo '<p>Thank you! We will get back to you as soon as possible</p>';
 
         
     } else {
