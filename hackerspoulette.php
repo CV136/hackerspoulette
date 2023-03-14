@@ -39,11 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset ($_POST['submit']) && $_POST['submit'] == 'submit') {
         if (empty($_POST['name'])) {
             $errors['name'] = "Please enter a name.";
-        } /*else if ( $length < 2 || $length > 255) {  
-            $errors['name'] = "Please enter a name between 2 and 255 characters";
-        }*/ else {
+        } else {
             $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-            if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
+            if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
                 $errors['name'] = "Only letters and white space allowed in this field.";
             }
         }
@@ -77,12 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset ($_POST['submit']) && $_POST['submit'] == 'submit') {
         if (empty($_POST['comment'])) {
             $errors['comment'] = "Please enter your comment.";
-        } /*else {
-            $name = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
-            if (!preg_match("/^[a-zA-Z0-9 ]*$/", $comment)) {
-                $errors['comment'] = ""; //error message
-            } //min and maximum length
-        }*/ //no need to limit the type of characters here?
+        }
     }
 
     //check honeypot
