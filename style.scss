@@ -1,12 +1,17 @@
 body {
     color: #b04438; 
-    background-color: #e08C53; //#f0a838 or #d97d27 or #e08C53
+    background-color: #f0a838; //#f0a838 or #d97d27 or #e08C53
     display: flex;
-    justify-content: center;
+    //justify-content: center; //puts both the title and the form in the middle (and thus off-center)
 }
 
 .contactform {
-    background-color: #f0a838;
-    padding: 5%;
+    //background-color: ; // ligther than f0a838 //opacity doesn't work?
+    padding: 5%; //unequal
     border-radius: 10%;
+    //align fields
+    //justify-content: center; //doesn't seem to do anything
+    h2 {
+        text-align: center;
+    }
 }
