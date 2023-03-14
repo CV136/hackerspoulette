@@ -69,5 +69,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-//should only get rid of the form, not everything else
-//errors still don't work
+//should only get rid of the form fields, not everything else
+//errors still don't work, so the lack of action in the form wasn't the problem

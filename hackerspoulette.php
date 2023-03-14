@@ -13,7 +13,7 @@
     </header>
     <div class="contactform">
     <h2>Contact support</h2>
-    <form method="POST" action="validation.php"> <!--script for action-->
+    <form method="POST" action="validation.php">
         <br>
         <label for="name">Name</label>
         <input type="text" name="name" id="name" minlength="2" maxlength="255" required>
