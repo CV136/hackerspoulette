@@ -10,21 +10,21 @@
 <body>
     <div class="contactform">
     <h2>Contact support</h2>
-    <form method="POST" action="">
+    <form method="POST" action=""> <!--script for action-->
         <br>
         <label for="name">Name</label>
-        <input type="text" name="name" minlength="2" maxlength="255" required>
+        <input type="text" name="name" id="name" minlength="2" maxlength="255" required>
         <br>
         <label>First name</label>
-        <input type="text" name="firstname" minlength="2" maxlength="255" required>
+        <input type="text" name="firstname" id="firstname" minlength="2" maxlength="255" required>
         <br>
         <label for="firstname">Email</label>
-        <input type="text" name="email" minlength="2" maxlength="255" required>
+        <input type="text" name="email" id="email" minlength="2" maxlength="255" required>
         <br>
         <label for="comment">Comment</label>
-        <input type="text" name="comment" minlength="2" maxlength="1000" required>
+        <input type="text" name="comment" id="comment" minlength="2" maxlength="1000" required>
         <br>
-        <input type="text" name="honey">
+        <!--input type="text" name="honey"-->
         <input type="submit">
     </form>
 </div>
