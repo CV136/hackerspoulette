@@ -31,19 +31,6 @@
 
 <?php
 
-//PDO
-try {
-    $strConnection = 'mysql:host=localhost;dbname=hackerspoulette'; //Ligne 1
-    $arrExtraParam= array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-    $pdo = new PDO($connStr, 'root', '', $arrExtraParam); // Instancie la connexion
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Ligne 4
-}
-catch(PDOException $e) {
-    $msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
-    die($msg);
-}
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = array();
     $name = $firstname = $email = $comment = "";
@@ -92,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
             if (!preg_match("/^[a-zA-Z0-9 ]*$/", $firstname)) {
                 $errors['comment'] = ""; //error message
-            } //min and maximum length
+            } //min and maximum length, type of characters
         }
     }
 
@@ -106,16 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }*/
     //captcha : requires a website, so to do after deployment?
 
-    //^ validate all that with the linked validator instead?
-
-    //PDO?
-    $pdo = new PDO('mysql:host=localhost;dbname=hackerspoulette', 'root', '');
-
-    $query = $pdo->prepare("INSERT INTO hackerspoulette (name, first_name, email, comments) 
-    VALUES (:name, :first_name, :email, :comments)");
-
-    //liaison des valeurs
-    //exécution de la requête
+    //^ validate all that with the linked validator instead?    
 
 
     if (count($errors) === 0) {
@@ -127,8 +105,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         foreach ($errors as $error) {
             echo $error . "<br>";
         }
-        echo 'warning';
     }
+
+    //PDO
+try {
+    $strConnection = 'mysql:host=localhost;dbname=hackerspoulette'; //Ligne 1
+    $arrExtraParam= array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
+    $pdo = new PDO($strConnection, 'root', '', $arrExtraParam); // Instancie la connexion
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Ligne 4
+}
+catch(PDOException $e) {
+    $msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
+    die($msg);
+} //?
+    
+    $query = $pdo->prepare("INSERT INTO contactform (name, firstname, email, comments) 
+    VALUES (:name, :firstname, :email, :comments)");
+
+    //liaison des valeurs
+    //exécution de la requête
 
 }
 
