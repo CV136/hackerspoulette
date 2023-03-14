@@ -1,10 +1,12 @@
 body {
-    color: black;
-    background-color: lightgrey;
-    //not grey, chicken color, and adjust text color for something that looks good with it
+    color: #b04438; 
+    background-color: #e08C53; //#f0a838 or #d97d27 or #e08C53
+    display: flex;
+    justify-content: center;
 }
 
 .contactform {
-    align-self: center;
-    //align center
+    background-color: #f0a838;
+    padding: 5%;
+    border-radius: 10%;
 }
