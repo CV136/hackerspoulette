@@ -31,6 +31,19 @@
 
 <?php
 
+//PDO
+try {
+    $strConnection = 'mysql:host=localhost;dbname=hackerspoulette'; //Ligne 1
+    $arrExtraParam= array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
+    $pdo = new PDO($connStr, 'root', '', $arrExtraParam); // Instancie la connexion
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Ligne 4
+}
+catch(PDOException $e) {
+    $msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
+    die($msg);
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = array();
     $name = $firstname = $email = $comment = "";
@@ -95,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //^ validate all that with the linked validator instead?
 
-    //PDO
+    //PDO?
     $pdo = new PDO('mysql:host=localhost;dbname=hackerspoulette', 'root', '');
 
     $query = $pdo->prepare("INSERT INTO hackerspoulette (name, first_name, email, comments) 
