@@ -74,17 +74,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if (count($errors) !== 0) {
-        /*foreach ($errors as $error) {
-            echo $error . "<br>";*/
-            echo "Please correct the following errors"; //messes up the layout
-            //find something unobtrusive like turning something red?
+            $errors['submit'] = "Please correct the following errors."; 
         } else {
-        //empty form fields ($_POST = array() ?)
-        //(or just hide the form altogether but stay on the page?
-        //or move to a "thank you" page but only if there are no errors?)
-        echo '<p>Thank you! We will get back to you as soon as possible</p>';
+        //(stay on the page, or move to a "thank you" page but only if there are no errors?)
+        $thankYou = "Thank you! We will get back to you as soon as possible";
         //var_dump($errors);
     }
+    //thank you message or error message stays when reloading the page
+    //make fields keep the user's input if there are errors
+    //give errors css class to turn their text red
 }
 ?>
 
@@ -113,6 +111,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <br>
         <!--input type="text" name="honey"-->
         <input type="submit" name="submit" value="Submit">
+        <?=@$errors['submit'];?>
+        <?=@$thankYou;?>
     </form>
 </div>
 
