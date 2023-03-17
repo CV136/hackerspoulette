@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!preg_match("/^[a-zA-Z-'\s]*$/", $name)) { //*? (length {2-255})
                 $errors['name'] = "Only letters and white space allowed in this field.";
             }
-        }
+        } //adding length requirement causes bug?
     
 
     //validate firstname
@@ -80,9 +80,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $thankYou = "Thank you! We will get back to you as soon as possible";
         //var_dump($errors);
     }
-    //thank you message or error message stays when reloading the page
-    //make fields keep the user's input if there are errors
-    //give errors css class to turn their text red
+    //messages stay when reloading the page (no option to refresh without resending the info)
+    //user input disappears when submitting even if there are errors
+    //-> make it so it only disappears if the form is validated and sent
+    //give errors class to turn their text red
 }
 ?>
 
